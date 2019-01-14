@@ -1,5 +1,6 @@
 package fr.formation.proxi4.metier.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -10,30 +11,53 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "survey")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "answers"})
-public class Survey {
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "answers" })
+public class Survey implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private Integer id;
-	
+
 	@Column
 	private LocalDate startDate;
-	
+
 	@Column
 	private LocalDate tempEndDate;
-	
+
 	@Column
 	private LocalDate endDate;
 
-	@OneToMany(mappedBy="survey")
+	@OneToMany(mappedBy = "survey")
 	private List<Answer> answers;
+
+	@Transient
+	private Integer positiveCount;
+
+	@Transient
+	private Integer negativeCount;
+
+	
+	public Survey() {
+		super();
+	}
+
+	public Survey(LocalDate startDate, LocalDate tempEndDate) {
+		super();
+		this.startDate = startDate;
+		this.tempEndDate = tempEndDate;
+	}
 
 	public Integer getId() {
 		return id;
@@ -75,5 +99,20 @@ public class Survey {
 		this.answers = answers;
 	}
 
-	
+	public Integer getPositiveCount() {
+		return positiveCount;
+	}
+
+	public void setPositiveCount(Integer positiveCount) {
+		this.positiveCount = positiveCount;
+	}
+
+	public Integer getNegativeCount() {
+		return negativeCount;
+	}
+
+	public void setNegativeCount(Integer negativeCount) {
+		this.negativeCount = negativeCount;
+	}
+
 }
