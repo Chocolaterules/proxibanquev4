@@ -60,7 +60,7 @@ public class ViewController {
 	
 	@RequestMapping("survey")
 	public ModelAndView showSurvey(@RequestParam Integer id) {
-		LOGGER.debug("Entrée sur la page Sandage");
+		LOGGER.debug("Entrée sur la page Sondage");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("survey");
 		LOGGER.debug("Lecture du sondage.");
