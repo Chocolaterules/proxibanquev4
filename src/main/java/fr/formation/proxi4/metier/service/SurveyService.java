@@ -22,9 +22,13 @@ public class SurveyService extends RestService<Survey> {
 	
 	public Survey getCurrentSurvey() {
 		List<Survey> surveys = this.readAll();
-		Survey survey = new Survey();
-		
-		return survey;
+		Survey curSurvey = new Survey();
+		for (Survey survey: surveys) {
+			if (survey.getEndDate() == null) {
+				curSurvey = survey;
+			}
+		}
+		return curSurvey;
 	}
 
 }
