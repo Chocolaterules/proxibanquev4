@@ -21,33 +21,38 @@ import fr.formation.proxi4.metier.service.SurveyService;
 
 @Controller
 @RequestMapping("/")
-@Transactional(readOnly=true)
+@Transactional(readOnly = true)
 public class ViewController {
 
 	private static final Logger LOGGER = Logger.getLogger(ViewController.class);
-	
+
 	@Autowired
 	private SurveyService surveyService;
-	
+
 	@Autowired
 	private ClientService clientService;
-	
+
 	@Autowired
 	private AnswerService answerService;
-	
-	
+
 	@RequestMapping({ "", "index" })
-	public ModelAndView index(@RequestParam(required=false) String message) {
+	public ModelAndView index(@RequestParam(required = false) String message,
+			@RequestParam(required = false) String closeMessage) {
 		LOGGER.debug("Entrée sur la page index.");
 		LOGGER.debug("Message récupéré suite à un redirection : " + message);
+		System.out.println(closeMessage);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("index");
 		LOGGER.debug("Ajout du sondage actuel.");
-		mav.addObject("survey", this.surveyService.getCurrentSurvey());
+		mav.addObject("message", message);
+		mav.addObject("closeMessage", closeMessage);
+		Survey currentSurvey = this.surveyService.getCurrentSurvey();
+		System.out.println(currentSurvey);
+		mav.addObject("survey", currentSurvey);
 		LOGGER.debug("Sondage ajouté.");
 		return mav;
 	}
-		
+
 	@RequestMapping("surveys")
 	public ModelAndView loadSurveys() {
 		LOGGER.debug("Entrée page des sondages.");
@@ -57,7 +62,7 @@ public class ViewController {
 		mav.addObject("surveys", this.surveyService.readAll());
 		return mav;
 	}
-	
+
 	@RequestMapping("survey")
 	public ModelAndView showSurvey(@RequestParam Integer id) {
 		LOGGER.debug("Entrée sur la page Sondage");
@@ -71,7 +76,7 @@ public class ViewController {
 		mav.addObject("survey", survey);
 		return mav;
 	}
-	
+
 	@RequestMapping("form")
 	public ModelAndView createSurvey() {
 		LOGGER.debug("Entrée sur le formulaire de création du Sondage");
@@ -80,8 +85,8 @@ public class ViewController {
 		mav.addObject("survey", new Survey());
 		return mav;
 	}
-	
-	@RequestMapping(path="form", method=RequestMethod.POST)
+
+	@RequestMapping(path = "form", method = RequestMethod.POST)
 	public String validateSurvey(Survey survey, RedirectAttributes attributes) {
 		String message = null;
 		LOGGER.debug("Création du sondage en DB.");
@@ -91,20 +96,21 @@ public class ViewController {
 		LOGGER.debug("Renvoi du message");
 		return Proxi4Constants.REDIRECT_TO_INDEX;
 	}
-	
+
 	@RequestMapping("close")
-	public String closeSurvey(Integer id, RedirectAttributes attributes) {
-		String message = null;
+	public String closeSurvey(@RequestParam Integer id, RedirectAttributes attributes) {
 		LOGGER.debug("Set du sondage pour lui ajouter une date de fin");
 		Survey survey = this.surveyService.read(id);
-		LOGGER.debug("Hibernate.initilaize.");
+		LOGGER.debug("Hibernate.initialize.");
 		Hibernate.initialize(survey);
 		LOGGER.debug("Setting de la date.");
 		survey.setEndDate(LocalDate.now());
 		LOGGER.debug("Update du sondage.");
 		this.surveyService.update(survey);
-		message = "Sondgae terminé.";
-		attributes.addFlashAttribute("message", message);
+		String closeMessage = "Sondage terminé.";
+		LOGGER.debug("Fin de close survey" + closeMessage);
+		attributes.addFlashAttribute("closeMessage", closeMessage);
+		System.out.println(attributes.getFlashAttributes());
 		return Proxi4Constants.REDIRECT_TO_INDEX;
 	}
 }
