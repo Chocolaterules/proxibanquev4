@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>fr.formation</groupId>
-	<artifactId>blog</artifactId>
+	<artifactId>proxibanquev4</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
 
@@ -48,6 +48,7 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.3.7.Final</version>
 		</dependency>
+		<!-- Gestion du LocalDate vers la BDD -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-java8</artifactId>
