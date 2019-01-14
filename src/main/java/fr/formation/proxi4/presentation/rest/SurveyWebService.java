@@ -1,5 +1,6 @@
 package fr.formation.proxi4.presentation.rest;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,6 +22,8 @@ public class SurveyWebService {
 	
 	@GetMapping
 	public Survey getCurrentSurvey() {
-		return this.service.getCurrentSurvey();
+		Survey survey = this.service.getCurrentSurvey();
+		Hibernate.initialize(survey);
+		return survey;
 	}
 }
