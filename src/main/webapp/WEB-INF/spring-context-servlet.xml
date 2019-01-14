@@ -20,7 +20,7 @@
 	<context:component-scan
 		base-package="fr.formation.proxi4.presentation
 					  fr.formation.proxi4.metier
-					  fr.formation.proxi4.persistance
+					  fr.formation.proxi4.persistence
 					  fr.formation.proxi4.presentation.rest
 					  " />
 	<!-- Configuration générale importante pour le module MVC. -->
@@ -46,7 +46,7 @@
 	</bean>
 
 	<jpa:repositories
-		base-package="fr.formation.proxi4.persistance" />
+		base-package="fr.formation.proxi4.persistence" />
 
 
 </beans>
