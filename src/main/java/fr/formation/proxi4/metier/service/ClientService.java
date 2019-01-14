@@ -18,13 +18,8 @@ public class ClientService extends RestService<Client> {
 		return this.dao;
 	}
 	
-	public Boolean confirmClient(String clientNum) {
-		Boolean result = false;
-		Client client = this.dao.findByClientNum(clientNum);
-		if (client != null) {
-			result = true;
-		}
-		return result;
+	public Client confirmClient(String clientNum) {
+		return this.dao.findByClientNum(clientNum);
 	}
 
 }

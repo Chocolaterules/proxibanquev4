@@ -28,7 +28,7 @@ public class ClientWebService {
 	}
 	
 	@GetMapping
-	public Boolean confirm(@RequestParam String clientNum) {
+	public Client confirm(@RequestParam String clientNum) {
 		return this.service.confirmClient(clientNum);
 	}
 }
