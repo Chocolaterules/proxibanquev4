@@ -1,6 +1,7 @@
 package fr.formation.proxi4.presentation;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -8,7 +9,7 @@ import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.formation.proxi4.Proxi4Constants;
+import fr.formation.proxi4.metier.entity.Answer;
 import fr.formation.proxi4.metier.entity.Survey;
 import fr.formation.proxi4.metier.service.AnswerService;
 import fr.formation.proxi4.metier.service.ClientService;
@@ -62,28 +64,46 @@ public class ViewController {
 		mav.setViewName("surveys");
 		LOGGER.info("Chargement des sondages");
 		List<Survey> surveys = this.surveyService.readAll();
-		Integer neg = this.surveyService.countNeg(surveys);
-		Integer pos = this.surveyService.countPos(surveys);
+		this.surveyService.analyzeAnswers(surveys);
 		mav.addObject("surveys", surveys);
-		mav.addObject("neg", neg);
-		mav.addObject("pos", pos);
+
 		return mav;
 	}
 
-	@RequestMapping("survey")
-	public ModelAndView showSurvey(@RequestParam Integer id) {
+	
+	@RequestMapping("survey/{id}")
+	public ModelAndView showSurvey(@PathVariable Integer id) {
+		System.out.println("id du sondage a afficher " + id);
 		LOGGER.info("Entrée sur la page Sondage");
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("survey");
+		mav.setViewName("surveyDetail");
+		
 		LOGGER.info("Lecture du sondage.");
 		Survey survey = this.surveyService.read(id);
+		
 		LOGGER.info("Hibernate.initialize.");
 		Hibernate.initialize(survey);
-		LOGGER.info("Ajout du sondage au mav.");
+		
+		LOGGER.info("Récupération des réponses du sondage");
+		List<Answer> answers = survey.getAnswers();
+		List<Answer> goodAnswers = new ArrayList<>();
+		List<Answer> badAnswers = new ArrayList<>();
+		for (Answer answer : answers) {
+			if (answer.getIsPositive()) {
+				goodAnswers.add(answer);
+			} else {
+				badAnswers.add(answer);
+			}
+		}
+		
+		LOGGER.info("Ajout des réponses au mav.");
 		mav.addObject("survey", survey);
+		mav.addObject("goodAnswers", goodAnswers);
+		mav.addObject("badAnswers", badAnswers);
 		return mav;
 	}
 
+	
 	@RequestMapping("form")
 	public ModelAndView createSurvey() {
 		LOGGER.info("Entrée sur le formulaire de création du Sondage");

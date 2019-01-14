@@ -17,47 +17,43 @@ public class SurveyService extends RestService<Survey> {
 
 	@Autowired
 	private SurveyDao dao;
-	
+
 	@Override
 	protected JpaRepository<Survey, Integer> getDao() {
 		return this.dao;
 	}
-	
+
 	public Survey getCurrentSurvey() {
 		List<Survey> surveys = this.readAll();
 		Survey curSurvey = new Survey();
-		for (Survey survey: surveys) {
+		for (Survey survey : surveys) {
 			if (survey.getEndDate() == null) {
 				curSurvey = survey;
 			}
 		}
 		return curSurvey;
 	}
-	
-	public Integer countPos(List<Survey> surveys) {
+
+	public void countPos(Survey survey) {
 		Integer pos = 0;
-		for (Survey survey : surveys) {
-			for (Answer answer : survey.getAnswers()) {
-				if (answer.getIsPositive() == true) {
-					pos += 1;
-				}
+		for (Answer answer : survey.getAnswers()) {
+			if (answer.getIsPositive() == true) {
+				pos += 1;
 			}
 		}
-		return pos;
+		survey.setPositiveCount(pos);
 	}
-	
-	public Integer countNeg(List<Survey> surveys) {
+
+	public void countNeg(Survey survey) {
 		Integer neg = 0;
-		for (Survey survey : surveys) {
-			for (Answer answer : survey.getAnswers()) {
-				if (answer.getIsPositive() == false) {
-					neg += 1;
-				}
+		for (Answer answer : survey.getAnswers()) {
+			if (answer.getIsPositive() == false) {
+				neg += 1;
 			}
 		}
-		return neg;
+		survey.setNegativeCount(neg);
 	}
-	
+
 	public LocalDate dateFormat(String date) {
 		System.out.println("entree dateFormat : " + date);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -67,6 +63,14 @@ public class SurveyService extends RestService<Survey> {
 		LocalDate newDate = LocalDate.parse(date, formatter);
 		System.out.println(newDate);
 		return newDate;
+	}
+
+	public void analyzeAnswers(List<Survey> surveys) {
+		for (Survey survey : surveys) {
+			this.countPos(survey);
+			this.countNeg(survey);
+		}
+
 	}
 
 }

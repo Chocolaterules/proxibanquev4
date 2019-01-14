@@ -30,28 +30,26 @@
 <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-
 	<section class="surveys-hero">
-		<h1> Liste des sondages réalisés </h1>
+		<h1>Liste des sondages réalisés</h1>
 		<table>
 			<tr>
-				<th> Sondage du : </th>
-				<th> Au : </th>
-				<th> Réponses positives </th>
-				<th> réponses négatives </th>
+				<th>Sondage du :</th>
+				<th>Au :</th>
+				<th>Réponses positives</th>
+				<th>réponses négatives</th>
+				<th>Lien</th>
 			</tr>
 			<c:forEach var="survey" items="${surveys}">
-				<tr> 
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+				<tr>
+					<td>${survey.startDate}</td>
+					<td>${survey.endDate}</td>
+					<td>${survey.positiveCount}</td>
+					<td>${survey.negativeCount}</td>
+					<td><a href="survey.html/${survey.id}">Clic</a></td>
 				</tr>
 			</c:forEach>
-		
-		
 		</table>
-	
 	</section>
 </body>
 </html>
