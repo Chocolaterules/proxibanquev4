@@ -4,18 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-import fr.formation.proxi4.metier.entity.Survey;
-import fr.formation.proxi4.persistence.SurveyDao;
-
 @Service
-public class SurveyService extends RestService<Survey> {
+public class AnswerService extends RestService<Answer> {
 
 	@Autowired
-	private SurveyDao dao;
-	
+	private AnswerDao dao;
+
 	@Override
-	protected JpaRepository<Survey, Integer> getDao() {
+	protected JpaRepository<Answer, Integer> getDao() {
 		return this.dao;
 	}
-
 }

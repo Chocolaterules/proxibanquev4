@@ -1,11 +1,12 @@
 package fr.formation.proxi4.persistence;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import fr.formation.proxi4.metier.entity.Survey;
-
 @Repository
-public interface SurveyDao extends JpaRepository<Survey, Integer> {
+public interface AnswerDao extends JpaRepository<Answer, Integer> {
 
+	public List<Answer> findBySurveyId(Integer id);
 }
