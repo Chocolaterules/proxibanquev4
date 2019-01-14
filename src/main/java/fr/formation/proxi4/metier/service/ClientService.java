@@ -14,5 +14,14 @@ public class ClientService extends RestService<Client> {
 	protected JpaRepository<Client, Integer> getDao() {
 		return this.dao;
 	}
+	
+	public Boolean confirmClient(String clientNum) {
+		Boolean result = false;
+		Client client = this.dao.findByClientNum(clientNum);
+		if (client != null) {
+			result = true;
+		}
+		return result;
+	}
 
 }
