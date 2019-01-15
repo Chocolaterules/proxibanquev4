@@ -1,0 +1,13 @@
+/*CSS du footer*/
+.footer {
+	height: 8vh;
+	border-top: 1px solid darkgrey;
+}
+
+.signature {
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	font-size: 0.7em;
+	color: #0C0F0A;
+	margin-top: 2.5%;
+}

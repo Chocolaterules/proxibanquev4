@@ -1,38 +1,38 @@
-/* CSS pour le header. */
-.header {
-	height: 50px;
-	width: 100%;
-	font-family: 'Montserrat', sans-serif;
-	z-index: 0;
-	box-shadow: 0px 1px 20px 1px rgba(0, 0, 0, .3);
-	background-color: white;
-	position: scroll;
-	display: flex;
-	flex-directon: row;
-	justify-content: space-between;
-	align-content: baseline;
-	align-items: center;
-}
+/* /* CSS pour le header. */ */
+/* .header { */
+/* 	height: 50px; */
+/* 	width: 100%; */
+/* 	font-family: 'Montserrat', sans-serif; */
+/* 	z-index: 0; */
+/* 	box-shadow: 0px 1px 20px 1px rgba(0, 0, 0, .3); */
+/* 	background-color: white; */
+/* 	position: scroll; */
+/* 	display: flex; */
+/* 	flex-directon: row; */
+/* 	justify-content: space-between; */
+/* 	align-content: baseline; */
+/* 	align-items: center; */
+/* } */
 
-.prez {
-	float: left;
-	font-family: 'Sarabun', sans-serif;
-	margin-left: 1em;
-}
+/* .prez { */
+/* 	float: left; */
+/* 	font-family: 'Sarabun', sans-serif; */
+/* 	margin-left: 1em; */
+/* } */
 
-div.prez h1 {
-	font-size: 1em;
-}
+/* div.prez h1 { */
+/* 	font-size: 1em; */
+/* } */
 
-.id {
-	float: right;
-	font-family: 'Sarabun', sans-serif;
-	margin-right: 1em;
-}
+/* .id { */
+/* 	float: right; */
+/* 	font-family: 'Sarabun', sans-serif; */
+/* 	margin-right: 1em; */
+/* } */
 
-div.id p {
-	font-size: 1em;
-}
+/* div.id p { */
+/* 	font-size: 1em; */
+/* } */
 
 /* CSS pour le statut des sondages*/
 .survey-hero {
@@ -111,16 +111,16 @@ div.buttons a {
 	background-image:;
 }
 
-/*CSS du footer*/
-.footer {
-	height: 8vh;
-	border-top: 1px solid darkgrey;
-}
+/* /*CSS du footer*/ */
+/* .footer { */
+/* 	height: 8vh; */
+/* 	border-top: 1px solid darkgrey; */
+/* } */
 
-.signature {
-	text-align: center;
-	font-family: 'Raleway', sans-serif;
-	font-size: 0.7em;
-	color: #0C0F0A;
-	margin-top: 2.5%;
-}
+/* .signature { */
+/* 	text-align: center; */
+/* 	font-family: 'Raleway', sans-serif; */
+/* 	font-size: 0.7em; */
+/* 	color: #0C0F0A; */
+/* 	margin-top: 2.5%; */
+/* } */

@@ -42,8 +42,6 @@ public class ViewController {
 		mav.setViewName("index");
 
 		LOGGER.info("Ajout du sondage actuel.");
-		mav.addObject("message", message);
-		mav.addObject("closeMessage", closeMessage);
 		Survey currentSurvey = this.surveyService.getCurrentSurvey();
 		System.out.println(currentSurvey);
 		mav.addObject("survey", currentSurvey);
