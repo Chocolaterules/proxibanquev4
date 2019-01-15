@@ -24,55 +24,70 @@
 	crossorigin="anonymous"></script>
 <!-- CSS personalisé -->
 <link rel="stylesheet" href="css/general.css">
-<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/surveyDetail.css">
 </head>
 <body>
-	<section class="surveys-hero">
-		<h1>Liste des commentaires négatifs.</h1>
-		<div class="table-left">
-			<table>
-				<tr>
-					<th>Commentaire</th>
-					<th>Déposé le</th>
-				</tr>
-				<c:forEach var="answer" items="${badAnswers}">
-					<tr>
-						<td>${answer.comment}</td>
-						<td>${answer.entryDate}</td>
-					</tr>
-				</c:forEach>
-			</table>
+	<jsp:include page="header.jsp"></jsp:include>
+	<div class="subheader">
+		<div>
+			<h1 class="my-title">Détail du sondage</h1>
 		</div>
-		<div class="table-right">
-			<h1>Clients qui ont laissé au moins un avis positif sur ce
-				sondage</h1>
-			<table>
-				<tr>
-					<th>Date du dépôt de l'avis</th>
-					<th>Numero client</th>
-					<th>Prénom</th>
-					<th>Nom</th>
-					<th>Email</th>
-					<th>Téléphone</th>
-					<th></th>
-				</tr>
-				<c:forEach var="answer" items="${goodAnswers}">
+		<div class="my-icons">
+			<a href="surveys.html">
+				<i class="material-icons">arrow_back_ios</i>
+			</a>
+			<a href="index.html">
+				<i class="material-icons">home</i>
+			</a>
+		</div>
+	</div>
+	<section class="surveys-hero">
+		<div class="table-container">
+			<div class="table-left">
+				<h5>Liste des avis positifs</h5>
+				<table>
 					<tr>
-						<td>${answer.entryDate}</td>
-						<td>${answer.client.clientNum}</td>
-						<td>${answer.client.firstName}</td>
-						<td>${answer.client.lastName}</td>
-						<td>${answer.client.email}</td>
-						<td>${answer.client.telNum}</td>
-						<td>
-							<c:if test="${empty answer.client.clientNum}">
-								Nouveau client !
-							</c:if>
-						</td>
+						<th>Date</th>
+						<th>Id Client</th>
+						<th>Prénom</th>
+						<th>Nom</th>
+						<th>E-mail</th>
+						<th>Téléphone</th>
+						<th style="width: auto;"></th>
 					</tr>
-				</c:forEach>
-			</table>
+					<c:forEach var="answer" items="${goodAnswers}">
+						<tr>
+							<td>${answer.entryDate}</td>
+							<td>${answer.client.clientNum}</td>
+							<td>${answer.client.firstName}</td>
+							<td>${answer.client.lastName}</td>
+							<td>${answer.client.email}</td>
+							<td>${answer.client.telNum}</td>
+							<td style="background-color: #F7F7F7"><c:if
+									test="${empty answer.client.clientNum}">
+									<i class="material-icons"> person_add </i>
+								</c:if></td>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+			<div class="table-right">
+				<h5>Liste des avis négatifs</h5>
+				<table>
+					<tr>
+						<th style="width: 35em;">Commentaire</th>
+						<th>Date</th>
+					</tr>
+					<c:forEach var="answer" items="${badAnswers}">
+						<tr>
+							<td>${answer.comment}</td>
+							<td>${answer.entryDate}</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
 		</div>
 	</section>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

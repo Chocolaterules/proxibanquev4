@@ -36,14 +36,7 @@
 <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-<!-- 	<section class="header"> -->
-<!-- 		<div class="prez"> -->
-<!-- 			<h1>Proxibanque Admin</h1> -->
-<!-- 		</div> -->
-<!-- 		<div class="id"> -->
-<!-- 			<p>Bienvenue, Administrateur</p> -->
-<!-- 		</div> -->
-<!-- 	</section> -->
+
 	<jsp:include page="header.jsp"></jsp:include>
 
 	<section class="survey-hero">
@@ -65,7 +58,7 @@
 	<section class="button-hero">
 		<div class="buttons">
 			<a href="surveys.html">
-				<button class="button-index listé">Liste des sondages</button>
+				<button class="button-index liste">Liste des sondages</button>
 			</a>
 
 			<c:if test="${ survey.id != null }">
@@ -88,17 +81,17 @@
 
 			<c:if test="${ survey.id == null }">
 				<a href="form.html">
-					<button class="button-index créa">Créer un nouveau sondage</button>
+					<button class="button-index crea">Créer un nouveau sondage</button>
 				</a>
 			</c:if>
 			<c:if test="${ survey.id !=null }">
 				<a href="form.html">
-					<button class="button-index créa" disabled>Créer un
+					<button class="button-index crea" disabled>Créer un
 						nouveau sondage</button>
 				</a>
 			</c:if>
 		</div>
 	</section>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
