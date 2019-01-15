@@ -8,6 +8,9 @@ import fr.formation.proxi4.metier.entity.Answer;
 import fr.formation.proxi4.persistence.AnswerDao;
 
 /**
+ * Classe de service pour l'entité Answer de l'application. Permet les opéarions
+ * du CRUD + récupérer toutes les Answers d'un coup.
+ * 
  * @author Adminl
  *
  */
