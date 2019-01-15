@@ -1,5 +1,8 @@
 package fr.formation.proxi4.presentation.rest;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,5 +28,13 @@ public class SurveyWebService {
 		Survey survey = this.service.getCurrentSurvey();
 		Hibernate.initialize(survey);
 		return survey;
+	}
+	
+	@GetMapping("/currentDate")
+	public String getCurrentDate() {
+		LocalDate localDate = LocalDate.now();//For reference
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+		String formattedString = localDate.format(formatter);
+		return formattedString;
 	}
 }
