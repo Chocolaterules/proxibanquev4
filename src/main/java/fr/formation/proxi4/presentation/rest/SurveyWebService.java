@@ -1,7 +1,6 @@
 package fr.formation.proxi4.presentation.rest;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 import org.hibernate.Hibernate;
@@ -15,6 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.formation.proxi4.metier.entity.Survey;
 import fr.formation.proxi4.metier.service.SurveyService;
 
+/**
+ * Classe WebService pour les sondages de l'application.
+ * 
+ * @author Adminl
+ *
+ */
 @RestController
 @RequestMapping("/survey")
 @Transactional(readOnly = true)
@@ -24,6 +29,12 @@ public class SurveyWebService {
 	@Autowired
 	private SurveyService service;
 
+	/**
+	 * Methode envoyant le sondage en cours (sondage avec une date de début
+	 * antérieure à la date de jour et pas de date de fermeture.)
+	 * 
+	 * @return Survey Le sondage en cours.
+	 */
 	@GetMapping
 	public Survey getCurrentSurvey() {
 		Survey survey = this.service.getCurrentSurvey();
@@ -31,18 +42,15 @@ public class SurveyWebService {
 		return survey;
 	}
 
-	@GetMapping("/currentDate")
-	public String getCurrentDate() {
-		LocalDate localDate = LocalDate.now();// For reference
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
-		String formattedString = localDate.format(formatter);
-		return formattedString;
-	}
-
+	/** Methode renvoyant le nombre de jours entre la date du jour et la fin prévisionnelle du sondage en cours.
+	 * @return Integer le nombre de jours entre les deux dates.
+	 */
 	@GetMapping("/date")
 	public Integer getDelay() {
 		Integer days = 15;
+		//Récupération de la date du jour.
 		Survey survey = this.service.getCurrentSurvey();
+		//between() renvoie un long, d'où le cast en int pour renvoyer le nombre de jours en Integer.
 		days = (int) ChronoUnit.DAYS.between(LocalDate.now(), survey.getTempEndDate());
 		return days;
 	}

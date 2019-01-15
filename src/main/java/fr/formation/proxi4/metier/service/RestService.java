@@ -4,6 +4,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+/** Classe regroupant les 5 methodes du CRUD + readAll utilisées par les autres services.
+ * @author Adminl
+ *
+ * @param <ENTITY>
+ */
 public abstract class RestService<ENTITY> {
 
 	protected abstract JpaRepository<ENTITY, Integer> getDao();

@@ -63,15 +63,18 @@ div.buttons a {
 	transition: 0.7s;
 }
 
+
 .crea:hover {
 	background-color: #78003F;
 	color: white;
+
 }
 
 .ferm:hover {
 	background-color: #D7263D;
 	color: white;
 }
+
 
 .liste:hover {
 	background-color: #5AD2F4;
