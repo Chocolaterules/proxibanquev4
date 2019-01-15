@@ -36,15 +36,15 @@
 <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-	<section class="header">
-		<div class="prez">
-			<h1>Proxibanque Admin</h1>
-		</div>
-		<div class="id">
-			<p>Bienvenue, Administrateur</p>
-		</div>
-	</section>
-
+<!-- 	<section class="header"> -->
+<!-- 		<div class="prez"> -->
+<!-- 			<h1>Proxibanque Admin</h1> -->
+<!-- 		</div> -->
+<!-- 		<div class="id"> -->
+<!-- 			<p>Bienvenue, Administrateur</p> -->
+<!-- 		</div> -->
+<!-- 	</section> -->
+	<jsp:include page="header.jsp"></jsp:include>
 
 	<section class="survey-hero">
 		<h1 class="my-title">Administration des sondages</h1>
@@ -79,6 +79,10 @@
 					<button class="button-index ferm" disabled>Fermer le
 						sondage en cours</button>
 				</a>
+				<c:if
+					test="${ not empty closeMessage }">
+					<h5>Le sondage a bien été clos.</h5>
+				</c:if>
 			</c:if>
 
 
