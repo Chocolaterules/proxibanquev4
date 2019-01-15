@@ -36,6 +36,10 @@
 <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
-
+	<footer>
+		<div class="footer">
+			<p class="signature">© MAQ - 2019</p>
+		</div>
+	</footer>
 </body>
 </html>
