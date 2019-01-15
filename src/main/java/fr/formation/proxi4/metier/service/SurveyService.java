@@ -25,10 +25,11 @@ public class SurveyService extends RestService<Survey> {
 
 	public Survey getCurrentSurvey() {
 		List<Survey> surveys = this.readAll();
-		Survey curSurvey = new Survey();
+		Survey curSurvey = null;
 		for (Survey survey : surveys) {
 			if (survey.getEndDate() == null && survey.getStartDate() != null) {
 				curSurvey = survey;
+				break;
 			}
 		}
 		return curSurvey;

@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import fr.formation.proxi4.metier.entity.Answer;
 import fr.formation.proxi4.persistence.AnswerDao;
 
+/**
+ * @author Adminl
+ *
+ */
 @Service
 public class AnswerService extends RestService<Answer> {
 
