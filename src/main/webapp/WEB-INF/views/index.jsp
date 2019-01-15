@@ -79,8 +79,7 @@
 					<button class="button-index ferm" disabled>Fermer le
 						sondage en cours</button>
 				</a>
-				<c:if
-					test="${ not empty closeMessage }">
+				<c:if test="${ not empty closeMessage }">
 					<h5>Le sondage a bien été clos.</h5>
 				</c:if>
 			</c:if>
@@ -100,10 +99,6 @@
 			</c:if>
 		</div>
 	</section>
-	<footer>
-		<div class="footer">
-			<p class="signature">© MAQ - 2019</p>
-		</div>
-	</footer>
+	<jsp:include page="header.jsp"></jsp:include>
 </body>
 </html>
