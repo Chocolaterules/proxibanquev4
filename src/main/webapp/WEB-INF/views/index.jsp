@@ -98,7 +98,7 @@
 	</section>
 	<footer>
 		<div class="footer">
-			<p class="signature">© MAQ 2019</p>
+			<p class="signature">© MAQ - 2019</p>
 		</div>
 	</footer>
 </body>
