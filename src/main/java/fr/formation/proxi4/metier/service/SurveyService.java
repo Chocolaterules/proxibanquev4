@@ -27,7 +27,7 @@ public class SurveyService extends RestService<Survey> {
 		List<Survey> surveys = this.readAll();
 		Survey curSurvey = new Survey();
 		for (Survey survey : surveys) {
-			if (survey.getEndDate() == null) {
+			if (survey.getEndDate() == null && survey.getStartDate() != null) {
 				curSurvey = survey;
 			}
 		}
@@ -57,9 +57,6 @@ public class SurveyService extends RestService<Survey> {
 	public LocalDate dateFormat(String date) {
 		System.out.println("entree dateFormat : " + date);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		DateTimeFormatter newFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//		String formatDate = date.format(formatter);
-//		System.out.println(formatDate);
 		LocalDate newDate = LocalDate.parse(date, formatter);
 		System.out.println(newDate);
 		return newDate;
