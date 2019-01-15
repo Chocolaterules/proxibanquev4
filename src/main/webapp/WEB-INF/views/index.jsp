@@ -25,49 +25,80 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	crossorigin="anonymous"></script>
+<!-- Polices Personalisées -->
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800,900|Raleway|Sarabun"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <!-- CSS personalisé -->
 <link rel="stylesheet" href="css/general.css">
 <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-	<h1>Administration des sondages</h1>
+	<section class="header">
+		<div class="prez">
+			<h1>Proxibanque Admin</h1>
+		</div>
+		<div class="id">
+			<p>Bienvenue, Administrateur</p>
+		</div>
+	</section>
+
+
 	<section class="survey-hero">
+		<h1 class="my-title">Administration des sondages</h1>
 		<c:if test="${ survey.id != null }">
 			<div>
-				<h2>Sondage en cours :</h2>
-				<h3>Du ${survey.startDate} au ${survey.tempEndDate}</h3>
-				<h2></h2>
+				<h2 class="survey-status">Sondage en cours :</h2>
+				<h3 class="survey-date">Du ${survey.startDate} au
+					${survey.tempEndDate}</h3>
 			</div>
 		</c:if>
 		<c:if test="${ survey.id == null }">
 			<div>
-				<h2>Il n'y a pas de sondages en cours.</h2>
+				<h2 class="survey-status">Il n'y a pas de sondage en cours.</h2>
 			</div>
 		</c:if>
 	</section>
+
 	<section class="button-hero">
-		<a href="surveys.html">
-			<button class="button">Liste des sondages</button>
-		</a> <a href="close.html?id=${ survey.id }">
-			<button class="button">Fermer le sondage en cours</button> <c:if
-				test="${ not empty closeMessage }">
-				<h5>Le sondage a bien été clos.</h5>
+		<div class="buttons">
+			<a href="surveys.html">
+				<button class="button-index listé">Liste des sondages</button>
+			</a>
+
+			<c:if test="${ survey.id != null }">
+				<a href="close.html?id=${ survey.id }">
+					<button class="button-index ferm">Fermer le sondage en
+						cours</button>
+				</a>
 			</c:if>
-		</a>
-		<c:if test="${ survey.id == null }">
-			<a href="form.html">
-				<button class="button">Créer un nouveau sondage</button>
-			</a>
-		</c:if>
-		<c:if test="${ survey.id !=null }">
-			<a href="form.html">
-				<button class="button" disabled>Créer un nouveau sondage</button>
-			</a>
-		</c:if>
+			<c:if test="${ survey.id == null }">
+				<a href="close.html?id=${ survey.id }">
+					<button class="button-index ferm" disabled>Fermer le
+						sondage en cours</button>
+				</a>
+			</c:if>
+
+
+
+			<c:if test="${ survey.id == null }">
+				<a href="form.html">
+					<button class="button-index créa">Créer un nouveau sondage</button>
+				</a>
+			</c:if>
+			<c:if test="${ survey.id !=null }">
+				<a href="form.html">
+					<button class="button-index créa" disabled>Créer un
+						nouveau sondage</button>
+				</a>
+			</c:if>
+		</div>
 	</section>
 	<footer>
 		<div class="footer">
-			<p></p>
+			<p class="signature">© MAQ 2019</p>
 		</div>
 	</footer>
 </body>

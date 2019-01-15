@@ -1,0 +1,126 @@
+/* CSS pour le header. */
+.header {
+	height: 50px;
+	width: 100%;
+	font-family: 'Montserrat', sans-serif;
+	z-index: 0;
+	box-shadow: 0px 1px 20px 1px rgba(0, 0, 0, .3);
+	background-color: white;
+	position: scroll;
+	display: flex;
+	flex-directon: row;
+	justify-content: space-between;
+	align-content: baseline;
+	align-items: center;
+}
+
+.prez {
+	float: left;
+	font-family: 'Sarabun', sans-serif;
+	margin-left: 1em;
+}
+
+div.prez h1 {
+	font-size: 1em;
+}
+
+.id {
+	float: right;
+	font-family: 'Sarabun', sans-serif;
+	margin-right: 1em;
+}
+
+div.id p {
+	font-size: 1em;
+}
+
+/* CSS pour le statut des sondages*/
+.survey-hero {
+	font-family: 'Montserrat', sans-serif;
+	min-height: 18vh;
+	z-index: 0;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.my-title {
+	padding-top: 20px;
+	padding-left: 10px;
+	font-size: 1.5em;
+	z-index: 1;
+	font-weight: 700;
+}
+
+.survey-status {
+	font-size: 1.0em;
+	padding-left: 10px;
+}
+
+.survey-date {
+	font-size: 1.0em;
+	padding-left: 10px;
+}
+
+/* CSS pour le conteneur d options*/
+.button-hero {
+	height: 60vh;
+	width: 99vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+div.buttons a {
+	height: 40%;
+	width: 35%;
+}
+
+.buttons {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 80%;
+	height: 100%;
+}
+
+.button-index {
+	margin: 20px;
+	height: 100%;
+	width: 100%;
+	border-radius: 10px;
+	border-style: none;
+	font-family: 'Sarabun', sans-serif;
+	box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, .2);
+	cursor: pointer;
+	background-color: white;
+}
+
+.créa {
+	background-image:;
+}
+
+.ferm {
+	background-image:;
+}
+
+.listé {
+	background-image:;
+}
+
+/*CSS du footer*/
+.footer {
+	height: 8vh;
+	border-top: 1px solid darkgrey;
+}
+
+.signature {
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	font-size: 0.7em;
+	color: #0C0F0A;
+	margin-top: 2.5%;
+}

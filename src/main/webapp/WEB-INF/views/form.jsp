@@ -32,18 +32,18 @@
 <body>
 	<section class="form-hero">
 		<h1> Créer un nouveau sondage </h1>
-		<form:form modelAttribute="survey" method="post" action="form.html" >
+		<form method="post" action="form.html" >
 			<div>
 				<label for="startDate">Date de début :</label>
-				<form:input id="startDate" name="startDate" path="startDate" placeholder="jj-mm-aaaa"/>
+				<input id="startDate" name="startDate" type="date"/>
 			</div>
 			<div>
 				<label for="tempEndDate">Date de fin :</label>
-				<form:input id="tempEndDate" name="tempEndDate" path="tempEndDate" placeholder="jj-mm-aaaa"/>
+				<input id="tempEndDate" name="tempEndDate" type="date"/>
 			</div>
 			<button type="submit">Créer</button>
 			<button type="reset">Réinitialiser</button>
-		</form:form>
+		</form>
 		<a href="index.html">
 			<button>Retour</button>
 		</a>

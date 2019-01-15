@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,17 +31,16 @@ public class ViewController {
 	@Autowired
 	private SurveyService surveyService;
 
-
 	@RequestMapping({ "", "index" })
 	public ModelAndView index(@RequestParam(required = false) String message,
 			@RequestParam(required = false) String closeMessage) {
-		
+
 		LOGGER.info("Entrée sur la page index.");
 		LOGGER.info("Message récupéré suite à un redirection : " + message);
 		System.out.println(closeMessage);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("index");
-		
+
 		LOGGER.info("Ajout du sondage actuel.");
 		mav.addObject("message", message);
 		mav.addObject("closeMessage", closeMessage);
@@ -64,20 +64,19 @@ public class ViewController {
 		return mav;
 	}
 
-	
 	@RequestMapping(path = "surveyDetail")
 	public ModelAndView showSurvey(@RequestParam Integer id) {
 		System.out.println("id du sondage a afficher " + id);
 		LOGGER.info("Entrée sur la page Sondage");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("surveyDetail");
-		
+
 		LOGGER.info("Lecture du sondage.");
 		Survey survey = this.surveyService.read(id);
-		
+
 		LOGGER.info("Hibernate.initialize.");
 		Hibernate.initialize(survey);
-		
+
 		LOGGER.info("Récupération des réponses du sondage");
 		List<Answer> answers = survey.getAnswers();
 		List<Answer> goodAnswers = new ArrayList<>();
@@ -89,7 +88,7 @@ public class ViewController {
 				badAnswers.add(answer);
 			}
 		}
-		
+
 		LOGGER.info("Ajout des réponses au mav.");
 		mav.addObject("survey", survey);
 		mav.addObject("goodAnswers", goodAnswers);
@@ -97,7 +96,6 @@ public class ViewController {
 		return mav;
 	}
 
-	
 	@RequestMapping("form")
 	public ModelAndView createSurvey() {
 		LOGGER.info("Entrée sur le formulaire de création du Sondage");
@@ -108,15 +106,12 @@ public class ViewController {
 	}
 
 	@RequestMapping(path = "form", method = RequestMethod.POST)
-	public String validateSurvey(String startDate, String tempEndDate, RedirectAttributes attributes) {
+	public String validateSurvey(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate tempEndDate, RedirectAttributes attributes) {
 		LOGGER.info("Création du sondage en DB.");
-		LOGGER.info(startDate + " " + tempEndDate);
 		String message = null;
-		LOGGER.info("Formatage des dates.");
-		LocalDate sDate = this.surveyService.dateFormat(startDate);
-		LocalDate eDate = this.surveyService.dateFormat(tempEndDate);
 		LOGGER.info("Ajout du sondage.");
-		this.surveyService.create(new Survey(sDate, eDate));
+		this.surveyService.create(new Survey(startDate, tempEndDate));
 		message = "Sondage ajouté";
 		attributes.addFlashAttribute("message", message);
 		LOGGER.info("Renvoi du message");
