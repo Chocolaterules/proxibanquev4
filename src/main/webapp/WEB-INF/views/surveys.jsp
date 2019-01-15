@@ -43,10 +43,12 @@
 			<c:forEach var="survey" items="${surveys}">
 				<tr>
 					<td>${survey.startDate}</td>
-					<td>${survey.endDate}</td>
+					<td>
+					<c:out value="${not empty survey.endDate ? survey.endDate : 'Sondage en cours'}" ></c:out>
+					</td>
 					<td>${survey.positiveCount}</td>
 					<td>${survey.negativeCount}</td>
-					<td><a href="survey.html/${survey.id}">Clic</a></td>
+					<td><a href="surveyDetail.html?id=${survey.id}">Clic</a></td>
 				</tr>
 			</c:forEach>
 		</table>

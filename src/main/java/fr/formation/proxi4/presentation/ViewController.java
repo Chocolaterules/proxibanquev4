@@ -9,7 +9,6 @@ import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,8 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import fr.formation.proxi4.Proxi4Constants;
 import fr.formation.proxi4.metier.entity.Answer;
 import fr.formation.proxi4.metier.entity.Survey;
-import fr.formation.proxi4.metier.service.AnswerService;
-import fr.formation.proxi4.metier.service.ClientService;
 import fr.formation.proxi4.metier.service.SurveyService;
 
 @Controller
@@ -33,27 +30,24 @@ public class ViewController {
 	@Autowired
 	private SurveyService surveyService;
 
-	@Autowired
-	private ClientService clientService;
-
-	@Autowired
-	private AnswerService answerService;
 
 	@RequestMapping({ "", "index" })
 	public ModelAndView index(@RequestParam(required = false) String message,
 			@RequestParam(required = false) String closeMessage) {
+		
 		LOGGER.info("Entrée sur la page index.");
 		LOGGER.info("Message récupéré suite à un redirection : " + message);
 		System.out.println(closeMessage);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("index");
+		
 		LOGGER.info("Ajout du sondage actuel.");
 		mav.addObject("message", message);
 		mav.addObject("closeMessage", closeMessage);
 		Survey currentSurvey = this.surveyService.getCurrentSurvey();
 		System.out.println(currentSurvey);
 		mav.addObject("survey", currentSurvey);
-		LOGGER.info("Sondage ajouté.");
+		LOGGER.info("Sondage en cours ajouté.");
 		return mav;
 	}
 
@@ -71,8 +65,8 @@ public class ViewController {
 	}
 
 	
-	@RequestMapping("survey/{id}")
-	public ModelAndView showSurvey(@PathVariable Integer id) {
+	@RequestMapping(path = "surveyDetail")
+	public ModelAndView showSurvey(@RequestParam Integer id) {
 		System.out.println("id du sondage a afficher " + id);
 		LOGGER.info("Entrée sur la page Sondage");
 		ModelAndView mav = new ModelAndView();
