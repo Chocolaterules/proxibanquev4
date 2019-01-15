@@ -43,22 +43,16 @@ public class ViewController {
 	 * Redirige le client vers index.jsp après avoir chargé le sondage en cours s'il
 	 * y en a un.
 	 * 
-	 * @param message      Message de confirmation issu de validateSurvey() pour
-	 *                     confirmer la création d'un nouveau sondage
 	 * @param closeMessage Message de confirmation issu de closeSurvey() pour
 	 *                     confirmer la fermeteur du sondage en cours.
 	 * @return ModelAndView Objet contenant le modèle et la vue du modèle MVC.
 	 */
 	@RequestMapping({ "", "index" })
-	public ModelAndView index(@RequestParam(required = false) String message,
-			@RequestParam(required = false) String closeMessage) {
+	public ModelAndView index(@RequestParam(required = false) String closeMessage) {
 		LOGGER.info("Entrée sur la page index.");
-		LOGGER.info("Message récupéré suite à une redirection : " + message);
-
 		// Ajoute index.jsp au ModelAndView.
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("index");
-
 		// Récupère le sondage en cours et l'ajoute à l'objet ModelAndView.
 		LOGGER.info("Ajout du sondage actuel.");
 		Survey currentSurvey = this.surveyService.getCurrentSurvey();
@@ -161,23 +155,14 @@ public class ViewController {
 	 *                    L'annotation @DateTimeFormat permet de gérer le
 	 *                    type="date" de l'input du formulaire de création de
 	 *                    sondage.
-	 * @param attributes  Attributs utilisés lors de la redirection vers index.html
-	 *                    après création du sondage.
 	 * @return ModelAndView Objet contenant le modèle et la vue du modèle MVC.
 	 */
 	@RequestMapping(path = "form", method = RequestMethod.POST)
 	public String validateSurvey(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
-			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate tempEndDate,
-			RedirectAttributes attributes) {
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate tempEndDate) {
 		LOGGER.info("Création du sondage en BDD.");
 		LOGGER.info("Ajout du sondage.");
 		this.surveyService.create(new Survey(startDate, tempEndDate));
-
-		// Ajout d'un attribut à la requete qui sera récupéré par la méthode index()
-		// lors de la redirection vers la page d'accueil.
-		String message = "Sondage ajouté";
-		attributes.addFlashAttribute("message", message);
-		LOGGER.info("Renvoi du message");
 		return Proxi4Constants.REDIRECT_TO_INDEX;
 	}
 

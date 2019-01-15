@@ -1,7 +1,6 @@
 package fr.formation.proxi4.presentation.rest;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 import org.hibernate.Hibernate;
@@ -42,18 +41,6 @@ public class SurveyWebService {
 		Hibernate.initialize(survey);
 		return survey;
 	}
-
-//	/** 
-//	 * methode permettant d'envoyer la date du jour sous forme de chaine de caractères au format "dd MM yyyy".
-//	 * @return String La date du jour en String (ex : 15 01 2019)
-//	 */
-//	@GetMapping("/currentDate")
-//	public String getCurrentDate() {
-//		LocalDate localDate = LocalDate.now();// For reference
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
-//		String formattedString = localDate.format(formatter);
-//		return formattedString;
-//	}
 
 	/** Methode renvoyant le nombre de jours entre la date du jour et la fin prévisionnelle du sondage en cours.
 	 * @return Integer le nombre de jours entre les deux dates.
