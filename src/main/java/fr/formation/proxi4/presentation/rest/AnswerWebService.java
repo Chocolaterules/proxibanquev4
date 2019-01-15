@@ -1,5 +1,7 @@
 package fr.formation.proxi4.presentation.rest;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,6 +24,7 @@ public class AnswerWebService {
 	
 	@PostMapping
 	public Answer create(@RequestBody Answer answer) {
+		answer.setEntryDate(LocalDate.now());
 		return this.service.create(answer);
 	}
 }
