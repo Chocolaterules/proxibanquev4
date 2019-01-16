@@ -40,7 +40,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="maTable">
+		<div class="my-table">
 			<table>
 				<tr>
 					<th>Sondage du :</th>

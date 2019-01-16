@@ -79,10 +79,12 @@
 						<th>Date</th>
 					</tr>
 					<c:forEach var="answer" items="${badAnswers}">
-						<tr>
-							<td>${answer.comment}</td>
-							<td>${answer.entryDate}</td>
-						</tr>
+						<c:if test="${ not empty answer.comment }">
+							<tr>
+								<td>${answer.comment}</td>
+								<td>${answer.entryDate}</td>
+							</tr>
+						</c:if>
 					</c:forEach>
 				</table>
 			</div>

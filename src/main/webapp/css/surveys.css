@@ -1,5 +1,6 @@
 table {
 	width: 80%;
+	border-bottom: 1px solid darkgrey;
 }
 
 th {
@@ -25,7 +26,7 @@ tr:nth-child(even) {
 	background-color: #B7E1E2;
 }
 
-.maTable {
+.my-table {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -55,3 +56,15 @@ tr:nth-child(even) {
 	padding-right: 20px;
 }
 
+div.my-icons a i {
+	font-size: 3em;
+}
+
+i{
+	color: black;
+	transition: 0.3s;
+}
+
+i:hover {
+	color: #5AD2F4;
+}

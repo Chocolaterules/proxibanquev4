@@ -59,18 +59,18 @@
 	<section class="button-hero">
 		<div class="buttons">
 			<a href="surveys.html">
-				<button class="button-index liste">Liste des sondages</button>
+				<button class="button-index button-parser">Liste des sondages</button>
 			</a>
 
 			<c:if test="${ survey.id != null }">
 				<a href="close.html?id=${ survey.id }">
-					<button class="button-index ferm">Fermer
+					<button class="button-index button-closer">Fermer
 						le sondage en cours</button>
 				</a>
 			</c:if>
 			<c:if test="${ survey.id == null }">
 				<a href="close.html?id=${ survey.id }">
-					<button class="button-index ferm" disabled>Fermer le
+					<button class="button-index button-closer" disabled>Fermer le
 						sondage en cours</button>
 				</a>
 				<c:if test="${ not empty closeMessage }" >
@@ -82,12 +82,12 @@
 
 			<c:if test="${ survey.id == null }">
 				<a href="form.html">
-					<button class="button-index crea">Créer un nouveau sondage</button>
+					<button class="button-index button-creator">Créer un nouveau sondage</button>
 				</a>
 			</c:if>
 			<c:if test="${ survey.id !=null }">
 				<a href="form.html">
-					<button class="button-index crea" disabled>Créer un
+					<button class="button-index button-creator" disabled>Créer un
 						nouveau sondage</button>
 				</a>
 			</c:if>
@@ -97,7 +97,7 @@
 		<div class="displayer">
 			<h3>Le sondage a bien été clos.</h3>
 			<button class="closeButton" onclick="closed(event)">
-				<i class="material-icons">close</i>
+				<i class="material-icons" id="myCloseButton">close</i>
 			</button>
 		</div>
 	</section>

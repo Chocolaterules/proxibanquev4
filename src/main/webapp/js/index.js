@@ -14,5 +14,5 @@ function closed(event) {
 	var target = event.target || event.currentTarget;
 	var closeScreen = document.getElementById("closeScreen");
 	closeScreen.style.display = "none";
-	window.location = "http://localhost:8080/proxibanquev4/index.html";
+	window.location = "index.html";
 }

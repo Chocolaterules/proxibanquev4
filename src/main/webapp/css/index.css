@@ -1,3 +1,4 @@
+/* CSS pour l'affichage des status du sondage*/
 .survey-hero {
 	font-family: 'Montserrat', sans-serif;
 	min-height: 18vh;
@@ -64,19 +65,19 @@ div.buttons a {
 }
 
 
-.crea:hover {
+.button-creator:hover {
 	background-color: #78003F;
 	color: white;
 
 }
 
-.ferm:hover {
+.button-closer:hover {
 	background-color: #D7263D;
 	color: white;
 }
 
 
-.liste:hover {
+.button-parser:hover {
 	background-color: #5AD2F4;
 }
 
@@ -99,6 +100,7 @@ div.buttons a {
 	width: 30%;
 	background-color: white;
 	border-radius: 10px;
+	border-right: 4em solid #D7263D;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -106,9 +108,18 @@ div.buttons a {
 }
 
 .closeButton {
-	width: 10%;
+	width: 16%;
 	background-color: transparent;
 	border-style: none;
+	transition: 0.3s;
+}
+
+.closeButton:hover {
+	color: #D7263D;
+}
+
+#myCloseButton{
+	font-size: 3.5em;
 }
 
 .displayer h3 {

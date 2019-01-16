@@ -67,3 +67,8 @@ th, td {
 tr:nth-child(even) {
 	background-color: #B7E1E2;
 }
+
+div.my-icons a i {
+	font-size: 3em;
+	color: black;
+}
