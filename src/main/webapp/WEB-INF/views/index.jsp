@@ -45,8 +45,15 @@
 		<c:if test="${ survey.id != null }">
 			<div>
 				<h2 class="survey-status">Sondage en cours :</h2>
-				<h3 class="survey-date">Du ${startDate} au
-					${endDate}</h3>
+				<h3 class="survey-date">
+					Du ${startDate} au
+					<c:if test="${empty warn }">
+						<span>${endDate}</span>
+					</c:if>
+					<c:if test="${ not empty warn }">
+						<span style="color: red;">${endDate}</span>
+					</c:if>
+				</h3>
 			</div>
 		</c:if>
 		<c:if test="${ survey.id == null }">
@@ -59,22 +66,24 @@
 	<section class="button-hero">
 		<div class="buttons">
 			<a href="surveys.html">
-				<button class="button-index button-parser">Liste des sondages</button>
+				<button class="button-index button-parser">Liste des
+					sondages</button>
 			</a>
 
 			<c:if test="${ survey.id != null }">
 				<a href="close.html?id=${ survey.id }">
-					<button class="button-index button-closer">Fermer
-						le sondage en cours</button>
+					<button class="button-index button-closer">Fermer le
+						sondage en cours</button>
 				</a>
 			</c:if>
 			<c:if test="${ survey.id == null }">
 				<a href="close.html?id=${ survey.id }">
-					<button class="button-index button-closer" disabled>Fermer le
-						sondage en cours</button>
+					<button class="button-index button-closer" disabled>Fermer
+						le sondage en cours</button>
 				</a>
-				<c:if test="${ not empty closeMessage }" >
-					<h5 style="display:none" id="displayCheck">Le sondage a bien été clos.</h5>
+				<c:if test="${ not empty closeMessage }">
+					<h5 style="display: none" id="displayCheck">Le sondage a bien
+						été clos.</h5>
 				</c:if>
 			</c:if>
 
@@ -82,13 +91,14 @@
 
 			<c:if test="${ survey.id == null }">
 				<a href="form.html">
-					<button class="button-index button-creator">Créer un nouveau sondage</button>
+					<button class="button-index button-creator">Créer un
+						nouveau sondage</button>
 				</a>
 			</c:if>
 			<c:if test="${ survey.id !=null }">
 				<a href="form.html">
-					<button class="button-index button-creator" disabled>Créer un
-						nouveau sondage</button>
+					<button class="button-index button-creator" disabled>Créer
+						un nouveau sondage</button>
 				</a>
 			</c:if>
 		</div>

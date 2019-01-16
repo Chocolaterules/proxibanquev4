@@ -2,6 +2,7 @@ package fr.formation.proxi4.presentation;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,17 +55,28 @@ public class ViewController {
 		// Ajoute index.jsp au ModelAndView.
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("index");
+		
 		// Récupère le sondage en cours et l'ajoute à l'objet ModelAndView.
 		LOGGER.info("Ajout du sondage actuel.");
 		Survey currentSurvey = this.surveyService.getCurrentSurvey();
 		mav.addObject("survey", currentSurvey);
+		
 		//Récupération des dates de début et fin du sondage en cours pour les mettre au format européen.
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd / MM / yyyy");
 		String startDate = currentSurvey.getStartDate().format(formatter);
 		String endDate = currentSurvey.getTempEndDate().format(formatter);
-		LOGGER.info("Sondage en cours ajouté.");
 		mav.addObject("startDate", startDate);
 		mav.addObject("endDate", endDate);
+		
+		// test sur le nombre de jours restants avant la fin prévisionnelle du sondage.
+		// Si la date de fin prévisonnelle est dépassée, la date de fin sera affichée en rouge à l'utilisateur.
+		Integer days = (int) ChronoUnit.DAYS.between(LocalDate.now(), currentSurvey.getTempEndDate());
+		String warn = null;
+		if(days <0) {
+			warn = "Date prévisionnelle dépassée";
+		}
+		mav.addObject("warn", warn);
+		LOGGER.info("Sondage en cours ajouté.");
 
 		return mav;
 	}
