@@ -46,8 +46,8 @@
 					<th>Sondage du :</th>
 					<th>Au :</th>
 					<th>Réponses positives</th>
-					<th>réponses négatives</th>
-					<th>Lien</th>
+					<th>Réponses négatives</th>
+					<th>Détail</th>
 				</tr>
 				<c:forEach var="survey" items="${surveys}">
 					<tr>
