@@ -41,7 +41,8 @@
 table {
 	width: 80%;
 	font-family: 'Sarabun', sans-serif;
-	font-size: 0.8em;
+	font-size: 1em;
+	border-bottom: 1px solid darkgrey;
 }
 
 th {
@@ -71,4 +72,8 @@ tr:nth-child(even) {
 div.my-icons a i {
 	font-size: 3em;
 	color: black;
+}
+
+div.my-icons a i:hover{
+	color: #5AD2F4;
 }

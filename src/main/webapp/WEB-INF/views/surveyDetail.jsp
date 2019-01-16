@@ -44,7 +44,7 @@
 	<section class="surveys-hero">
 		<div class="table-container">
 			<div class="table-left">
-				<h5>Liste des avis positifs</h5>
+				<h5>Liste des clients avec un avis positif</h5>
 				<table>
 					<tr>
 						<th>Date</th>
@@ -63,7 +63,7 @@
 							<td>${answer.client.lastName}</td>
 							<td>${answer.client.email}</td>
 							<td>${answer.client.telNum}</td>
-							<td style="background-color: #F7F7F7"><c:if
+							<td style="background-color: #F7F7F7; text-align:center;"><c:if
 									test="${empty answer.client.clientNum}">
 									<i class="material-icons"> person_add </i>
 								</c:if></td>
@@ -72,7 +72,7 @@
 				</table>
 			</div>
 			<div class="table-right">
-				<h5>Liste des avis négatifs</h5>
+				<h5>Liste des commentaires négatifs</h5>
 				<table>
 					<tr>
 						<th style="width: 35em;">Commentaire</th>
