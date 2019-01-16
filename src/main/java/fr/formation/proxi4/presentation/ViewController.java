@@ -58,7 +58,7 @@ public class ViewController {
 		LOGGER.info("Ajout du sondage actuel.");
 		Survey currentSurvey = this.surveyService.getCurrentSurvey();
 		mav.addObject("survey", currentSurvey);
-		
+		//Récupération des dates de début et fin du sondage en cours pour les mettre au format européen.
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd / MM / yyyy");
 		String startDate = currentSurvey.getStartDate().format(formatter);
 		String endDate = currentSurvey.getTempEndDate().format(formatter);
