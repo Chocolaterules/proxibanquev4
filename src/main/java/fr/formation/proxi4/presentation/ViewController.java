@@ -1,6 +1,7 @@
 package fr.formation.proxi4.presentation;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +58,13 @@ public class ViewController {
 		LOGGER.info("Ajout du sondage actuel.");
 		Survey currentSurvey = this.surveyService.getCurrentSurvey();
 		mav.addObject("survey", currentSurvey);
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd / MM / yyyy");
+		String startDate = currentSurvey.getStartDate().format(formatter);
+		String endDate = currentSurvey.getTempEndDate().format(formatter);
 		LOGGER.info("Sondage en cours ajouté.");
+		mav.addObject("startDate", startDate);
+		mav.addObject("endDate", endDate);
 
 		return mav;
 	}

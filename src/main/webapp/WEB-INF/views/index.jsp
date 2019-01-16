@@ -45,8 +45,8 @@
 		<c:if test="${ survey.id != null }">
 			<div>
 				<h2 class="survey-status">Sondage en cours :</h2>
-				<h3 class="survey-date">Du ${survey.startDate} au
-					${survey.tempEndDate}</h3>
+				<h3 class="survey-date">Du ${startDate} au
+					${endDate}</h3>
 			</div>
 		</c:if>
 		<c:if test="${ survey.id == null }">
