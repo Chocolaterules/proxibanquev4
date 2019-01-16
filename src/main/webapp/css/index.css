@@ -80,3 +80,38 @@ div.buttons a {
 	background-color: #5AD2F4;
 }
 
+#closeScreen {
+	position : fixed;
+	top: 0%;
+	left:0%;
+	display: none;
+	height: 100vh;
+	width: 100vw;
+	flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, .1)); 
+}
+
+.displayer {
+	height: 20%;
+	width: 30%;
+	background-color: white;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.closeButton {
+	width: 10%;
+	background-color: transparent;
+	border-style: none;
+}
+
+.displayer h3 {
+	margin: 1em;
+	font-size: 1.5em;
+}

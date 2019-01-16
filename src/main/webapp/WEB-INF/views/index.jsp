@@ -34,8 +34,9 @@
 <!-- CSS personalisé -->
 <link rel="stylesheet" href="css/general.css">
 <link rel="stylesheet" href="css/index.css">
+<script src="js/index.js"></script>
 </head>
-<body>
+<body onload="displayable()">
 
 	<jsp:include page="header.jsp"></jsp:include>
 
@@ -63,8 +64,8 @@
 
 			<c:if test="${ survey.id != null }">
 				<a href="close.html?id=${ survey.id }">
-					<button class="button-index ferm">Fermer le sondage en
-						cours</button>
+					<button class="button-index ferm">Fermer
+						le sondage en cours</button>
 				</a>
 			</c:if>
 			<c:if test="${ survey.id == null }">
@@ -72,8 +73,8 @@
 					<button class="button-index ferm" disabled>Fermer le
 						sondage en cours</button>
 				</a>
-				<c:if test="${ not empty closeMessage }">
-					<h5>Le sondage a bien été clos.</h5>
+				<c:if test="${ not empty closeMessage }" >
+					<h5 style="display:none" id="displayCheck">Le sondage a bien été clos.</h5>
 				</c:if>
 			</c:if>
 
@@ -90,6 +91,14 @@
 						nouveau sondage</button>
 				</a>
 			</c:if>
+		</div>
+	</section>
+	<section id="closeScreen">
+		<div class="displayer">
+			<h3>Le sondage a bien été clos.</h3>
+			<button class="closeButton" onclick="closed(event)">
+				<i class="material-icons">close</i>
+			</button>
 		</div>
 	</section>
 	<jsp:include page="footer.jsp"></jsp:include>

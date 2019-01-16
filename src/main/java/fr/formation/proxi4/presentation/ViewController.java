@@ -108,7 +108,7 @@ public class ViewController {
 		LOGGER.info("Hibernate.initialize.");
 		Hibernate.initialize(survey);
 
-		// Récupération des listes de bonnes et mauvaises réponses du sondageet ajout au
+		// Récupération des listes de bonnes et mauvaises réponses du sondage et ajout au
 		// ModelAndView.
 		LOGGER.info("Récupération des réponses du sondage");
 		List<Answer> answers = survey.getAnswers();
