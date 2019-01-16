@@ -29,7 +29,7 @@ public class AnswerWebService {
 	private AnswerService service;
 
 	/**
-	 * Methode permettant de persister une réponse en base de données.
+	 * Méthode permettant de persister une réponse en base de données.
 	 * 
 	 * @param answer La réponse à ajouter en BDD.
 	 * @return Answer La réponse ajoutée en BDD avec un id.

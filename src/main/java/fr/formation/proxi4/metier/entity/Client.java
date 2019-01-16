@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Classe modelisant un client de l'application.
+ * Classe modélisant un client de l'application.
  * 
  * @author Adminl
  *

@@ -15,10 +15,16 @@ import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * Classe modélisant un sondage de l'application.
+ * 
+ * @author Adminl
+ *
+ */
 @Entity
 @Table(name = "survey")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "answers" })
-public class Survey implements Serializable{
+public class Survey implements Serializable {
 
 	/**
 	 * 
@@ -42,13 +48,14 @@ public class Survey implements Serializable{
 	@OneToMany(mappedBy = "survey")
 	private List<Answer> answers;
 
+	// @Transient permet d'indiquer à Hibernate de ne pas enregistrer cet attribut
+	// en base de données. 
 	@Transient
 	private Integer positiveCount;
 
 	@Transient
 	private Integer negativeCount;
 
-	
 	public Survey() {
 		super();
 	}

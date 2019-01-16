@@ -32,7 +32,7 @@ public class ClientWebService {
 	 * Permet de persister un nouveau client en BDD.
 	 * 
 	 * @param client Le client à enregistrer.
-	 * @return Client le client enregistré avec un id.D
+	 * @return Client le client enregistré avec un id.
 	 */
 	@PostMapping
 	public Client create(@RequestBody Client client) {
@@ -40,7 +40,7 @@ public class ClientWebService {
 	}
 
 	/**
-	 * Methode renvoyant un objet Client à partir de son identifiant à 8 chiffres.
+	 * Méthode renvoyant un objet Client à partir de son identifiant à 8 chiffres.
 	 * 
 	 * @param clientNum L'identifiant à 8 chiffres du client recherché.
 	 * @return Client Le client recherché. Renvoie null s'il n'y a pas de client

@@ -13,7 +13,8 @@ import fr.formation.proxi4.metier.entity.Survey;
 import fr.formation.proxi4.persistence.SurveyDao;
 
 /**
- * Classe regroupant les services utilisés pour les Survey de l'application.
+ * Classe de service pour l'entité Survey de l'application. Permet les opérations
+ * du CRUD + récupérer tous les Surveys d'un coup.
  * 
  * @author Adminl
  *
@@ -30,8 +31,8 @@ public class SurveyService extends RestService<Survey> {
 	}
 
 	/**
-	 * Methode permettant de récupérer le sondage en cours le jour du lancement de
-	 * l'application
+	 * Méthode permettant de récupérer le sondage en cours le jour du lancement de
+	 * l'application.
 	 * 
 	 * @return Survey le sondage en cours. Renvoie null s'il n'y a aucun sondage en
 	 *         cours.
@@ -50,10 +51,10 @@ public class SurveyService extends RestService<Survey> {
 	}
 
 	/**
-	 * Methode permettant de compter le nombre de réponses positives pour un sondage
+	 * Méthode permettant de compter le nombre de réponses positives pour un sondage
 	 * donné.
 	 * 
-	 * @param survey Le sondage à analyser
+	 * @param survey Le sondage à analyser.
 	 */
 	public void countPos(Survey survey) {
 		Integer pos = 0;
@@ -62,15 +63,15 @@ public class SurveyService extends RestService<Survey> {
 				pos += 1;
 			}
 		}
-		// utilisation du paramètre annoté @Transient PositiveCount de la classe Survey.
+		// utilisation du paramètre annoté @Transient positiveCount de la classe Survey.
 		survey.setPositiveCount(pos);
 	}
 
 	/**
-	 * Methode permettant de compter le nombre de réponses negatives pour un sondage
+	 * Méthode permettant de compter le nombre de réponses négatives pour un sondage
 	 * donné.
 	 * 
-	 * @param survey Le sondage à analyser
+	 * @param survey Le sondage à analyser.
 	 */
 	public void countNeg(Survey survey) {
 		Integer neg = 0;
@@ -79,29 +80,29 @@ public class SurveyService extends RestService<Survey> {
 				neg += 1;
 			}
 		}
-		// utilisation du paramètre annoté @Transient NegativeCount de la classe Survey.
+		// utilisation du paramètre annoté @Transient negativeCount de la classe Survey.
 		survey.setNegativeCount(neg);
 	}
 
 	/**
-	 * Permet de transformer un String en objet LocalDate. la date doit être au
-	 * format "dd-MM-yyyy" pour être formaté en LocalDate par cette méthode.
+	 * Permet de transformer un String en objet LocalDate. La date doit être au
+	 * format "dd-MM-yyyy" pour être formatée en LocalDate par cette méthode.
 	 * 
 	 * @param date La date à transformer sous forme de chaine de caractères.
-	 * @return LocalDate la date en format LocalDate.
+	 * @return LocalDate La date en format LocalDate.
 	 */
 	public LocalDate dateFormat(String date) {
 		System.out.println("entree dateFormat : " + date);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-		// craétion du LocalDate à partir du formatter
+		// création du LocalDate à partir du formatter.
 		LocalDate newDate = LocalDate.parse(date, formatter);
 		System.out.println(newDate);
 		return newDate;
 	}
 
 	/**
-	 * Methode permettant de fixer le nombre de réponses positives et négatives d'un
+	 * Méthode permettant de fixer le nombre de réponses positives et négatives d'un
 	 * ensemble de sondages. Utilise les méthodes countPos et countNeg de
 	 * SurveyService sur chaque sondage de la liste.
 	 * 

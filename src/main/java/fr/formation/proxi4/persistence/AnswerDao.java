@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import fr.formation.proxi4.metier.entity.Answer;
 
 /**
- * Interface utilisée par Spring pour gérer les échanges avec la table Answer de
+ * Interface utilisée par Spring pour gérer les échanges avec la table answer de
  * la base de données.
  * 
  * @author Adminl
@@ -18,7 +18,7 @@ import fr.formation.proxi4.metier.entity.Answer;
 public interface AnswerDao extends JpaRepository<Answer, Integer> {
 
 	/**
-	 * Methodé personnalisée permettant de récupérer toutes les réponses d'un
+	 * Méthode personnalisée permettant de récupérer toutes les réponses d'un
 	 * sondage particulier grâce à l'id du sondage.
 	 * 
 	 * @param id L'id du sondage qui contient les réponses visées.

@@ -22,7 +22,7 @@ import fr.formation.proxi4.metier.entity.Survey;
 import fr.formation.proxi4.metier.service.SurveyService;
 
 /**
- * Classe utilisée par SpringDispatcher permettant de rediriger les requetes
+ * Classe utilisée par SpringDispatcher permettant de rediriger les requêtes
  * entrantes vers les traitements adéquats.
  * 
  * @author Adminl
@@ -39,12 +39,12 @@ public class ViewController {
 	private SurveyService surveyService;
 
 	/**
-	 * Methode appelée lors de l'arrivée sur la page d'accueil de l'application.
+	 * Méthode appelée lors de l'arrivée sur la page d'accueil de l'application.
 	 * Redirige le client vers index.jsp après avoir chargé le sondage en cours s'il
 	 * y en a un.
 	 * 
 	 * @param closeMessage Message de confirmation issu de closeSurvey() pour
-	 *                     confirmer la fermeteur du sondage en cours.
+	 *                     confirmer la fermeture du sondage en cours.
 	 * @return ModelAndView Objet contenant le modèle et la vue du modèle MVC.
 	 */
 	@RequestMapping({ "", "index" })
@@ -63,9 +63,9 @@ public class ViewController {
 	}
 
 	/**
-	 * Methode appelée lors de la redirection vers surveys.html. Récupère l'ensemble
-	 * des sondages de la BDD et appelle analyseAnswers de SurveyService pour
-	 * calculer le nombre de réponses positives et négatives de chauqe sondage.
+	 * Méthode appelée lors de la redirection vers surveys.html. Récupère l'ensemble
+	 * des sondages de la BDD et appelle analyzeAnswers de SurveyService pour
+	 * calculer le nombre de réponses positives et négatives de chaque sondage.
 	 * 
 	 * @return ModelAndView Objet contenant le modèle et la vue du modèle MVC.
 	 */
@@ -77,7 +77,7 @@ public class ViewController {
 
 		LOGGER.info("Chargement des sondages");
 		List<Survey> surveys = this.surveyService.readAll();
-		// Methode qui va modifier les attributs PositiveCount et NegativeCount de
+		// Méthode qui va modifier les attributs positiveCount et negativeCount de
 		// chaque sondage après avoir calculé le nombre de réponses positives et
 		// négatives.
 		this.surveyService.analyzeAnswers(surveys);
@@ -87,7 +87,7 @@ public class ViewController {
 	}
 
 	/**
-	 * Methode appelée lors de la redirection vers survey.html pour un sondage
+	 * Méthode appelée lors de la redirection vers surveyDetail.html pour un sondage
 	 * spécifique. Après avoir récupéré le sondage visé, la méthode ajoute deux
 	 * listes au ModelAndView : la liste des réponses positives et celle des
 	 * réponses négatives pour les transmettre à la page jsp.
@@ -104,7 +104,7 @@ public class ViewController {
 		LOGGER.info("Lecture du sondage.");
 		Survey survey = this.surveyService.read(id);
 
-		// Hibernate.initialize permet d'aviter l'erreur "no session" d'Hibernate.
+		// Hibernate.initialize permet d'éviter l'erreur "no session" d'Hibernate.
 		LOGGER.info("Hibernate.initialize.");
 		Hibernate.initialize(survey);
 
@@ -130,7 +130,7 @@ public class ViewController {
 	}
 
 	/**
-	 * Methode appelée lors de la redirection vers form.html qui permettra la
+	 * Méthode appelée lors de la redirection vers form.html qui permettra la
 	 * création d'un nouveau sondage.
 	 * 
 	 * @return ModelAndView Objet contenant le modèle et la vue du modèle MVC.
@@ -167,11 +167,11 @@ public class ViewController {
 	}
 
 	/**
-	 * Methode appelée lorsque l'utilsateur souhaite cloturer le sondage en cours.
+	 * Méthode appelée lorsque l'utilsateur souhaite clôturer le sondage en cours.
 	 * 
 	 * @param id         L'id du sondage à fermer.
-	 * @param attributes Attributs utilisés lors de la redirection vers index.html
-	 *                   après création du sondage.
+	 * @param attributes Attribut utilisé lors de la redirection vers index.html
+	 *                   après fermeture du sondage.
 	 * @return ModelAndView Objet contenant le modèle et la vue du modèle MVC.
 	 */
 	@RequestMapping("close")
@@ -179,11 +179,11 @@ public class ViewController {
 		LOGGER.info("Récupération du sondage pour lui ajouter une date de fin");
 		Survey survey = this.surveyService.read(id);
 
-		// initialize permet d'aviter l'erreur "no Session" d'Hibernate.
+		// initialize permet d'éviter l'erreur "no Session" d'Hibernate.
 		LOGGER.info("Hibernate.initialize.");
 		Hibernate.initialize(survey);
 
-		// on fixe la date de cloture à la date du jour avec LocalDate.now().
+		// on fixe la date de clôture à la date du jour avec LocalDate.now().
 		LOGGER.info("Setting de la date.");
 		survey.setEndDate(LocalDate.now());
 
@@ -191,7 +191,7 @@ public class ViewController {
 		LOGGER.info("Update du sondage.");
 		this.surveyService.update(survey);
 
-		// Ajout d'un attribut à la requete qui sera récupéré par la méthode index()
+		// Ajout d'un attribut à la requête qui sera récupéré par la méthode index()
 		// lors de la redirection vers la page d'accueil.
 		String closeMessage = "Sondage terminé.";
 		LOGGER.info("Fin de close survey" + closeMessage);

@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
- * Classe modelisant une réponse à un sondage de l'application
+ * Classe modélisant une réponse à un sondage de l'application.
  * 
  * @author Adminl
  *

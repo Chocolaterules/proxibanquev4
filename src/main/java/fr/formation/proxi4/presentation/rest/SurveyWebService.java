@@ -30,8 +30,8 @@ public class SurveyWebService {
 	private SurveyService service;
 
 	/**
-	 * Methode envoyant le sondage en cours (sondage avec une date de début
-	 * antérieure à la date de jour et pas de date de fermeture.)
+	 * Méthode envoyant le sondage en cours (sondage avec une date de début
+	 * antérieure à la date du jour et pas de date de fermeture.)
 	 * 
 	 * @return Survey Le sondage en cours.
 	 */
@@ -42,7 +42,7 @@ public class SurveyWebService {
 		return survey;
 	}
 
-	/** Methode renvoyant le nombre de jours entre la date du jour et la fin prévisionnelle du sondage en cours.
+	/** Méthode renvoyant le nombre de jours entre la date du jour et la fin prévisionnelle du sondage en cours.
 	 * @return Integer le nombre de jours entre les deux dates.
 	 */
 	@GetMapping("/date")

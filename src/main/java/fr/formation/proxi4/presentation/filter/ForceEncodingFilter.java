@@ -10,7 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 /**
- * Classe permettant de filtrer les requetes HTTP entrantes
+ * Classe permettant de filtrer les requêtes HTTP entrantes.
  * 
  * @author Adminl
  *
@@ -24,7 +24,7 @@ public class ForceEncodingFilter implements Filter {
 	}
 
 	/**
-	 * Methode permettant de forcer l'encodage de toutes les requetes entrantes au
+	 * Méthode permettant de forcer l'encodage de toutes les requêtes entrantes au
 	 * format UTF-8.
 	 */
 	@Override

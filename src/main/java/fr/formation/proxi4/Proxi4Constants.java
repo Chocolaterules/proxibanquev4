@@ -1,6 +1,7 @@
 package fr.formation.proxi4;
 
-/** Classe de constantes necessaires à l'application.
+/** 
+ * Classe de constantes nécessaires à l'application.
  * @author Adminl
  *
  */

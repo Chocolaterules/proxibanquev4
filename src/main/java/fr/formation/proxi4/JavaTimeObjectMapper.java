@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 /**
- * Classe permettant d'utiliser @DateTimeFormat sur les parametres de requete de
+ * Classe permettant d'utiliser @DateTimeFormat sur les paramètres de requête de
  * type date dans la classe ViewController.
  * 
  * @author Adminl
