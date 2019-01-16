@@ -2,6 +2,7 @@ package fr.formation.proxi4.metier.service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class SurveyService extends RestService<Survey> {
 		Survey curSurvey = null;
 		for (Survey survey : surveys) {
 			// s'il existe un sondage en cours dans la BDD, on le retourne.
-			if (survey.getEndDate() == null && survey.getStartDate() != null) {
+			if (survey.getEndDate() == null && ChronoUnit.DAYS.between(LocalDate.now(), survey.getStartDate()) < 1) {
 				curSurvey = survey;
 				break;
 			}
