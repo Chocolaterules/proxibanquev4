@@ -27,31 +27,43 @@
 	crossorigin="anonymous"></script>
 <!-- CSS personalisé -->
 <link rel="stylesheet" href="css/general.css">
-<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/surveys.css">
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
 	<section class="surveys-hero">
-		<h1>Liste des sondages réalisés</h1>
-		<table>
-			<tr>
-				<th>Sondage du :</th>
-				<th>Au :</th>
-				<th>Réponses positives</th>
-				<th>réponses négatives</th>
-				<th>Lien</th>
-			</tr>
-			<c:forEach var="survey" items="${surveys}">
+		<div class="subheader">
+			<h1 class="my-title">Liste des sondages réalisés</h1>
+			<div class="my-icons">
+				<a href="index.html">
+					<i class="material-icons">home</i>
+				</a>
+			</div>
+		</div>
+		<div class="maTable">
+			<table>
 				<tr>
-					<td>${survey.startDate}</td>
-					<td>
-					<c:out value="${not empty survey.endDate ? survey.endDate : 'Sondage en cours'}" ></c:out>
-					</td>
-					<td>${survey.positiveCount}</td>
-					<td>${survey.negativeCount}</td>
-					<td><a href="surveyDetail.html?id=${survey.id}">Clic</a></td>
+					<th>Sondage du :</th>
+					<th>Au :</th>
+					<th>Réponses positives</th>
+					<th>réponses négatives</th>
+					<th>Lien</th>
 				</tr>
-			</c:forEach>
-		</table>
+				<c:forEach var="survey" items="${surveys}">
+					<tr>
+						<td>${survey.startDate}</td>
+						<td><c:out
+								value="${not empty survey.endDate ? survey.endDate : 'Sondage en cours'}"></c:out>
+						</td>
+						<td>${survey.positiveCount}</td>
+						<td>${survey.negativeCount}</td>
+						<td><a href="surveyDetail.html?id=${survey.id}"><i
+								class="material-icons"> call_made </i></a></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
 	</section>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

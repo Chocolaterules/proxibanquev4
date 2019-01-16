@@ -1,0 +1,77 @@
+.subheader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.my-title {
+	padding-top: 20px;
+	padding-left: 10px;
+	font-size: 1.5em;
+	z-index: 1;
+	font-weight: 700;
+}
+
+.my-icons {
+	padding-top: 20px;
+	padding-right: 20px;
+}
+
+.form-hero {
+	height: 86vh;
+}
+
+.my-form {
+	width: 19.5vw;
+	margin-left: 40vw;
+	margin-top: 10vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.start-date, .end-date {
+	margin-top: 5vh;
+}
+
+.end-date {
+	margin-bottom: 5vh;
+}
+
+.my-buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.button {
+	border-style: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+input {
+	width: 100%;
+}
+
+.my-input {
+	border-style: none;
+	border-bottom: 1px solid dimgray;
+	background-color: transparent;
+	transition: 0.3s;
+}
+
+.my-input:focus {
+	border-style: none;
+	border-bottom: 3px solid #78003F;
+}
+
+i{
+	color: black;
+	transition: 0.3s;
+}
+
+i:hover{
+	color: #78003F;
+}

@@ -27,27 +27,36 @@
 	crossorigin="anonymous"></script>
 <!-- CSS personalisé -->
 <link rel="stylesheet" href="css/general.css">
-<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/form.css">
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
 	<section class="form-hero">
-		<h1> Créer un nouveau sondage </h1>
-		<form method="post" action="form.html" >
-			<div>
-				<label for="startDate">Date de début :</label>
-				<input id="startDate" name="startDate" type="date"/>
+		<div class="subheader">
+			<h1 class="my-title">Créer un nouveau sondage</h1>
+			<div class="my-icons">
+				<a href="index.html">
+					<i class="material-icons">home</i>
+				</a>
 			</div>
-			<div>
-				<label for="tempEndDate">Date de fin :</label>
-				<input id="tempEndDate" name="tempEndDate" type="date"/>
-			</div>
-			<button type="submit">Créer</button>
-			<button type="reset">Réinitialiser</button>
-		</form>
-		<a href="index.html">
-			<button>Retour</button>
-		</a>
+		</div>
+		<div class="my-form">
+			<form method="post" action="form.html">
+				<div class="start-date">
+					<label for="startDate">Date de début :</label>
+					<input class="my-input" id="startDate" name="startDate" type="date"/>
+				</div>
+				<div class="end-date">
+					<label for="tempEndDate">Date de fin :</label>
+					<input class="my-input" id="tempEndDate" name="tempEndDate" type="date"/>
+				</div>
+				<div class="my-buttons">
+					<button class="button" type="submit"><i class="material-icons" style="font-size: 3em;">check</i></button>
+					<button class="button" type="reset"><i class="material-icons" style="font-size: 3em;">refresh</i></button>
+				</div>
+			</form>
+		</div>
 	</section>
-
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

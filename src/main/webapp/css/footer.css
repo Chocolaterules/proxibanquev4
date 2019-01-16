@@ -1,6 +1,6 @@
 /*CSS du footer*/
 .footer {
-	height: 8vh;
+	height: 20px;
 	border-top: 1px solid darkgrey;
 }
 
@@ -9,5 +9,5 @@
 	font-family: 'Raleway', sans-serif;
 	font-size: 0.7em;
 	color: #0C0F0A;
-	margin-top: 2.5%;
+	margin-top: 1.5%;
 }
